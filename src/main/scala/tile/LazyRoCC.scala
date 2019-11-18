@@ -187,6 +187,13 @@ class AccumulatorExampleModuleImp(outer: AccumulatorExample)(implicit p: Paramet
   io.mem.req.bits.phys := Bool(false)
 }
 
+object AccumulatorExample extends App {
+  chisel3.Driver.execute(args, () => new AccumulatorExample)
+  // Alternate version if there are no args
+  // chisel3.Driver.execute(Array[String](), () => new HelloWorld)
+}
+
+
 class  TranslatorExample(opcodes: OpcodeSet)(implicit p: Parameters) extends LazyRoCC(opcodes, nPTWPorts = 1) {
   override lazy val module = new TranslatorExampleModuleImp(this)
 }
